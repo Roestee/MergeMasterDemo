@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class Detector : MonoBehaviour
 {
+    public bool isAvailable;
+    
+
+    private void Awake()
+    {
+        isAvailable = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.GetComponent<ObjectDrag>().ObjectDetect(false);
+        if (other.CompareTag("Placed"))
+        {
+            isAvailable = false;
+        }
     }
 }

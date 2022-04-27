@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: -1142884467182307693}
   m_Layer: 0
   m_Name: Barrel
-  m_TagString: Untagged
+  m_TagString: Placed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -240,6 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018d9fb8333269d4dbe5d9af0d0fae6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlaceable: 1
+  isEmpty: 1
 --- !u!54 &-1142884467182307693
 Rigidbody:
   m_ObjectHideFlags: 0

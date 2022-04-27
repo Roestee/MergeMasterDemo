@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class PlaceableObject : MonoBehaviour
 {
-    
-   
+    public bool Placed { get; private set; }
+
 }

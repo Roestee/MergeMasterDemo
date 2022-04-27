@@ -10,19 +10,27 @@ public class BuildingSystem : MonoBehaviour
 
     public GridLayout gridLayout;
     private Grid grid;
-
+    
     [SerializeField] private Tilemap MainTilemap;
     [SerializeField] private TileBase redTile;
+    [SerializeField] private GameObject[] detectors;
+    [SerializeField] private Vector3[] locations;
 
     public GameObject prefab1;
-
-    private PlaceableObject objectToPlace;
 
     #region Unity Methods
     private void Awake()
     {
         current = this;
         grid = gridLayout.gameObject.GetComponent<Grid>();
+        detectors = new GameObject[15];
+        detectors = GameObject.FindGameObjectsWithTag("Detector");
+        locations = new Vector3[detectors.Length];
+
+        for (int i = 0; i < detectors.Length; i++)
+        {
+            locations[i] = detectors[i].transform.position;
+        }
     }
     #endregion
 
@@ -51,13 +59,25 @@ public class BuildingSystem : MonoBehaviour
 
     public void InitializeWithObject(GameObject prefab)
     {
-        Vector3 position = SnapCoordinateToGrid(new Vector3(0, 0, -10));
+        Vector3 position = SnapCoordinateToGrid(GetAvailableLocation());
         GameObject obj = Instantiate(prefab, position, Quaternion.identity);
     }
 
     public void Button1()
     {
         InitializeWithObject(prefab1);
+    }
+
+    public Vector3 GetAvailableLocation()
+    {
+        for (int i = 0; i < detectors.Length; i++)
+        {
+            while(detectors[i].GetComponent<Detector>().isAvailable) 
+            {
+                return locations[i];
+            }
+        }
+        return Vector3.zero;
     }
     #endregion
 }
