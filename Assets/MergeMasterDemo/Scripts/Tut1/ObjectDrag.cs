@@ -6,9 +6,8 @@ public class ObjectDrag : MonoBehaviour
 {
     private Vector3 offset;
     private Vector3 startPos;
-    private bool objectIsAvailable;
+
     public bool isPlaceable = true;
-    public bool isEmpty = true;
 
     private void OnMouseDown()
     {
@@ -22,7 +21,8 @@ public class ObjectDrag : MonoBehaviour
         float x = Mathf.Clamp(pos.x, -9.0f, 9.0f);
         float z = Mathf.Clamp(pos.z, -15.0f, -5f);
         pos = new Vector3(x, pos.y, z);
-        transform.position = BuildingSystem.current.SnapCoordinateToGrid(pos);    
+        transform.position = BuildingSystem.current.SnapCoordinateToGrid(pos);
+        
     }
 
     private void OnMouseUp()
@@ -37,18 +37,17 @@ public class ObjectDrag : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         switch (other.tag)
         {
-            case"Detector":
-                isPlaceable = false;
+            case "Detector":
                 other.GetComponent<Detector>().isAvailable = false;
                 break;
-            case "Placeable":
-                isPlaceable = true;
+            case "Placed":
+                isPlaceable = false;
                 break;
-        }                     
+        }
     }
 
     private void OnTriggerExit(Collider other)

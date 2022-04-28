@@ -1003,7 +1003,7 @@ MonoBehaviour:
   redTile: {fileID: 11400000, guid: 294e29563819f3f41b8220ffe7e6be54, type: 2}
   detectors: []
   locations: []
-  prefab1: {fileID: 7975532081262707593, guid: 11de824210486ed4995d7a8c6d24056d, type: 3}
+  prefab1: {fileID: 7528415665482781047, guid: 8badd6c03b5bafa44bd353c948828d11, type: 3}
 --- !u!1 &1360185418
 GameObject:
   m_ObjectHideFlags: 0
