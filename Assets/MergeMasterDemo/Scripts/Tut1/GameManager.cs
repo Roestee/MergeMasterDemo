@@ -4,23 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] detectors;
-    [SerializeField] private Vector3[] locations;
+    public static GameManager current;
+    private bool RoundStart;
 
-    public static GameManager gm;
 
-    private void Awake()
+    public void StartFightButton()
     {
-        detectors = new GameObject[15];
-        detectors = GameObject.FindGameObjectsWithTag("Detector");
-        locations = new Vector3[detectors.Length];
 
     }
-
-    private void Start()
-    {
-       
-    }
-
-   
 }

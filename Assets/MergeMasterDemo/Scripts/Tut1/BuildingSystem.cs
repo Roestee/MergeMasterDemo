@@ -12,7 +12,6 @@ public class BuildingSystem : MonoBehaviour
     private Grid grid;
     
     [SerializeField] private Tilemap MainTilemap;
-    [SerializeField] private TileBase redTile;
     [SerializeField] private GameObject[] detectors;
     [SerializeField] private Vector3[] locations;
 

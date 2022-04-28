@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Placeable
   - Placed
   - Detector
+  - Enemy
   layers:
   - Default
   - TransparentFX
