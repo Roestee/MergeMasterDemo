@@ -17,6 +17,7 @@ public class BuildingSystem : MonoBehaviour
     private Vector3[] locations;
 
     public GameObject prefab1;
+    public GameObject prefab2;
 
     #region Unity Methods
     private void Awake()
@@ -76,8 +77,15 @@ public class BuildingSystem : MonoBehaviour
         {
             GameManager.current.CalculateCoin(-50);
             InitializeWithObject(prefab1);
+        }     
+    }
+    public void Button2()
+    {
+        if (GameManager.current.coin >= 50)
+        {
+            GameManager.current.CalculateCoin(-50);
+            InitializeWithObject(prefab2);
         }
-        
     }
 
     public Vector3 GetAvailableLocation()

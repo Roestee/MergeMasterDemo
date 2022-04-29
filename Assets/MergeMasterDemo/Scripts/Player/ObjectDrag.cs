@@ -17,7 +17,10 @@ public class ObjectDrag : MonoBehaviour
 
     private void Start()
     {
-        levelCol = GetComponent<PlayerManager>().level;
+        if (GetComponent<PlayerManager>() != null)
+            levelCol = GetComponent<PlayerManager>().level;
+        if (GetComponent<WarriorManager>() != null)
+            levelCol = GetComponent<WarriorManager>().level;
     }
 
     private void Update()

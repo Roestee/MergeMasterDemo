@@ -3030,6 +3030,7 @@ MonoBehaviour:
   gridLayout: {fileID: 1226767046}
   MainTilemap: {fileID: 1206726242}
   prefab1: {fileID: 7528415665482781047, guid: 8badd6c03b5bafa44bd353c948828d11, type: 3}
+  prefab2: {fileID: 1279368810495996418, guid: 0b018eb439e9f1b4b8ac2aa134e07308, type: 3}
 --- !u!1 &1265969763
 GameObject:
   m_ObjectHideFlags: 0
@@ -3325,9 +3326,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1226767048}
         m_TargetAssemblyTypeName: BuildingSystem, Assembly-CSharp
-        m_MethodName: SpawnObject2
+        m_MethodName: Button2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
