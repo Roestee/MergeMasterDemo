@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ObjectDrag : MonoBehaviour
 {
+    [Header("Prefabs")]
     [SerializeField] GameObject level2Prefab;
     [SerializeField] GameObject level3Prefab;
     [SerializeField] GameObject level4Prefab;

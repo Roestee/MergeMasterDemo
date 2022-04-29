@@ -2471,6 +2471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 60
+  coin: 100
 --- !u!1 &7601321275359758886
 GameObject:
   m_ObjectHideFlags: 0

@@ -2676,7 +2676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 40
-  anim: {fileID: 0}
+  coin: 50
 --- !u!114 &1646664471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2689,7 +2689,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1dea86150dc9ff40b9a6f9762690e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 200
   damageAmount: -10
 --- !u!1 &8309973384973664081
 GameObject:

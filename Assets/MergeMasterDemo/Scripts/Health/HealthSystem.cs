@@ -6,6 +6,7 @@ public class HealthSystem : MonoBehaviour
     public event Action<float> OnHealthPctChanged = delegate { };
 
     [SerializeField] private int maxHealth = 40;
+    [SerializeField] private int coin;
 
     private Animator anim;
     private bool isAlive = true;
@@ -26,14 +27,16 @@ public class HealthSystem : MonoBehaviour
     public void ModifyHealth(int amount)
     {
         //Check current health.
-        if(currentHealth <= 0 && isAlive)
+        if(currentHealth <= 1 && isAlive)
         {
-            anim.SetTrigger("Death");
-
+            anim.SetTrigger("Death");      
             isAlive = false;
 
             if (gameObject.CompareTag("Enemy"))
+            {
                 gameObject.tag = "DeathEnemy";
+                GameManager.current.CalculateCoin(coin);
+            }
 
             if (gameObject.CompareTag("Placed"))
                 gameObject.tag = "DeathPlayer";

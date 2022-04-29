@@ -72,7 +72,12 @@ public class BuildingSystem : MonoBehaviour
 
     public void Button1()
     {
-        InitializeWithObject(prefab1);
+        if(GameManager.current.coin >= 50)
+        {
+            GameManager.current.CalculateCoin(-50);
+            InitializeWithObject(prefab1);
+        }
+        
     }
 
     public Vector3 GetAvailableLocation()

@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,9 +20,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gamePanel;
     [SerializeField] GameObject endPanel;
     [SerializeField] GameObject restartPanel;
+    [SerializeField] TextMeshProUGUI coinText;
+
 
     public bool roundStart { get; private set; }
     public bool isStageOver { get; private set; }
+    public int coin { get; private set; }
 
     //Enemys and players on the scene.
     private GameObject[] enemys;
@@ -38,7 +42,10 @@ public class GameManager : MonoBehaviour
         current = this;
         roundStart = false;
         isStageOver = false;
+        coin = 200;
+        coinText.text = coin.ToString();
     }
+
     private void Update()
     {
         if (roundStart)
@@ -88,6 +95,13 @@ public class GameManager : MonoBehaviour
     public void NexLevelButton()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    //Calculate coin
+    public void CalculateCoin(int value)
+    {
+        coin += value;
+        coinText.text = coin.ToString();
     }
 
     //Change UI Panel.
