@@ -59,7 +59,7 @@ public class BuildingSystem : MonoBehaviour
     public void InitializeWithObject(GameObject prefab)
     {
         Vector3 position = SnapCoordinateToGrid(GetAvailableLocation());
-        GameObject obj = Instantiate(prefab, position, Quaternion.identity);
+        Instantiate(prefab, position, Quaternion.identity);
     }
 
     public void Button1()

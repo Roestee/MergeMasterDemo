@@ -8,15 +8,28 @@ public class ObjectDrag : MonoBehaviour
     private Vector3 startPos;
 
     public bool isPlaceable = true;
+    private bool isRoundStart;
 
+    private void Update()
+    {
+        isRoundStart = GameManager.current.roundStart;
+    }
     private void OnMouseDown()
     {
+        if(isRoundStart)
+        {
+            return;
+        }
         startPos = transform.position;
         offset = transform.position - BuildingSystem.GetMouseWorldPosition();
     }
 
     private void OnMouseDrag()
     {
+        if (isRoundStart)
+        {
+            return;
+        }
         Vector3 pos = BuildingSystem.GetMouseWorldPosition() + offset;
         float x = Mathf.Clamp(pos.x, -9.0f, 9.0f);
         float z = Mathf.Clamp(pos.z, -15.0f, -5f);
@@ -27,6 +40,10 @@ public class ObjectDrag : MonoBehaviour
 
     private void OnMouseUp()
     {
+        if (isRoundStart)
+        {
+            return;
+        }
         if (!isPlaceable)
         {
             transform.position = startPos;

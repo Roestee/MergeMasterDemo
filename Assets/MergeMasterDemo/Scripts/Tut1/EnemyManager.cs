@@ -1,20 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
-public class PlayerManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
     [SerializeField] private int damageAmount = -10;
 
+    private GameObject player;
     private Animator anim;
     private HealthSystem healthSystem;
-    private GameObject enemy;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         healthSystem = GetComponent<HealthSystem>();
     }
-
     private void Update()
     {
         if (GameManager.current.roundStart)
@@ -22,14 +22,12 @@ public class PlayerManager : MonoBehaviour
             StartAnim();
             FindClosestTarget();
             HitTarget();
-            print(enemy.name);
         }
         if (GameManager.current.isStageOver)
         {
             anim.SetBool("isGameStart", false);
         }
     }
-
     public void StartAnim()
     {
         if (!anim.GetBool("isGameStart"))
@@ -38,17 +36,17 @@ public class PlayerManager : MonoBehaviour
 
     public void DamageTarget()
     {
-        enemy.gameObject.GetComponent<HealthSystem>().ModifyHealth(damageAmount);
+        player.GetComponent<HealthSystem>().ModifyHealth(damageAmount);
     }
 
     private void HitTarget()
     {
         if (healthSystem.GetIsAlive())
         {
-            if (enemy.CompareTag("Placed"))
+            if (player.CompareTag("Placed"))
             {
-                print(enemy.name);
-                transform.LookAt(enemy.transform);
+                print(player.name);
+                transform.LookAt(player.transform);
             }
             else
                 FindClosestTarget();
@@ -61,7 +59,7 @@ public class PlayerManager : MonoBehaviour
     {
         float distanceToClosestEnemy = Mathf.Infinity;
         GameObject closestEnemy = null;
-        GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] allEnemies = GameObject.FindGameObjectsWithTag("Placed");
 
         foreach (GameObject currentEnemy in allEnemies)
         {
@@ -72,6 +70,7 @@ public class PlayerManager : MonoBehaviour
                 closestEnemy = currentEnemy;
             }
         }
-        enemy = closestEnemy;
+        player = closestEnemy;
     }
+   
 }

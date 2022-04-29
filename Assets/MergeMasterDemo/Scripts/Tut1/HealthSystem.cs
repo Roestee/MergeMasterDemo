@@ -1,32 +1,59 @@
+using System;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    private int health;
-    private int healthMax;
+    [SerializeField]
+    private int maxHealth = 40;
 
-    public HealthSystem(int healthMax)
+    private int currentHealth;
+
+    public event Action<float> OnHealthPctChanged = delegate { };
+
+    public Animator anim;
+
+    private bool isAlive = true;
+
+
+    private void Awake()
     {
-        this.healthMax = healthMax;
-        health = healthMax;
+        anim = this.GetComponent<Animator>();
     }
 
-    public float GetHealthPercent()
+    private void OnEnable()
     {
-        return health / healthMax;
+        currentHealth = maxHealth;       
     }
 
-    public int GetHealth()
+    public int GetHealthValue()
     {
-        return health;
+        return maxHealth;
     }
 
-    public void Damage(int damageAmount)
+    public bool GetIsAlive()
     {
-        health -= damageAmount;
-        if (health < 0)
+        return isAlive;
+    }
+
+    public void ModifyHealth(int amount)
+    {
+        if(currentHealth <= 1 && isAlive)
         {
-            //do something.
+            anim.SetTrigger("Death");
+
+            isAlive = false;
+
+            if (gameObject.CompareTag("Enemy"))
+                gameObject.tag = "DeathEnemy";
+
+            if (gameObject.CompareTag("Placed"))
+                gameObject.tag = "DeathPlayer";
+            return;
         }
+        currentHealth += amount;
+
+        float currentHealthPct = (float)currentHealth / (float)maxHealth;
+        OnHealthPctChanged(currentHealthPct);
     }
+
 }
