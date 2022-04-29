@@ -3029,8 +3029,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridLayout: {fileID: 1226767046}
   MainTilemap: {fileID: 1206726242}
-  detectors: []
-  locations: []
   prefab1: {fileID: 7528415665482781047, guid: 8badd6c03b5bafa44bd353c948828d11, type: 3}
 --- !u!1 &1265969763
 GameObject:
@@ -4491,9 +4489,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37eecdf605dd69046bc4c7fd14d72661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  updateSpeedSeconds: 0.2
   foregroundImageEnemy: {fileID: 1411907155}
   foregroundImagePlayer: {fileID: 1532195273}
-  updateSpeedSeconds: 0.2
   startPanel: {fileID: 2035943580}
   gamePanel: {fileID: 421289236}
   endPanel: {fileID: 1766116863}
