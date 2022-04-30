@@ -7,6 +7,9 @@ public class ObjectDrag : MonoBehaviour
     [SerializeField] GameObject level3Prefab;
     [SerializeField] GameObject level4Prefab;
 
+    [Header("Tag")]
+    [SerializeField] string playerString;
+
     public bool isPlaceable = true;
 
     private Vector3 offset;
@@ -59,37 +62,45 @@ public class ObjectDrag : MonoBehaviour
         }
         if (!isPlaceable)
         {
-            string otherTag = levelOther.GetComponent<PlayerManager>().level;
-            switch (otherTag)
+            string otherTag = null;
+            if (levelOther.GetComponent<PlayerManager>() != null)
+                otherTag = levelOther.GetComponent<PlayerManager>().level;
+            if (levelOther.GetComponent<WarriorManager>() != null)
+                otherTag = levelOther.GetComponent<WarriorManager>().level;
+
+            if(playerString == levelOther.GetComponent<ObjectDrag>().playerString)
             {
-                case "Level1":
-                    if (levelCol == "Level1")
-                    {
-                        Vector3 pos = transform.position;
-                        Destroy(this.gameObject);
-                        Destroy(levelOther);
-                        Instantiate(level2Prefab, pos, Quaternion.identity);
-                    }
-                    break;
-                case "Level2":
-                    if (levelCol == "Level2")
-                    {
-                        Vector3 pos = transform.position;
-                        Destroy(this.gameObject);
-                        Destroy(levelOther);
-                        Instantiate(level3Prefab, pos, Quaternion.identity);
-                    }
-                    break;
-                case "Level3":
-                    if (levelCol == "Level3")
-                    {
-                        Vector3 pos = transform.position;
-                        Destroy(this.gameObject);
-                        Destroy(levelOther);
-                        Instantiate(level4Prefab, pos, Quaternion.identity);
-                    }
-                    break;
-            }
+                switch (otherTag)
+                {
+                    case "Level1":
+                        if (levelCol == "Level1")
+                        {
+                            Vector3 pos = transform.position;
+                            Destroy(this.gameObject);
+                            Destroy(levelOther);
+                            Instantiate(level2Prefab, pos, Quaternion.identity);
+                        }
+                        break;
+                    case "Level2":
+                        if (levelCol == "Level2")
+                        {
+                            Vector3 pos = transform.position;
+                            Destroy(this.gameObject);
+                            Destroy(levelOther);
+                            Instantiate(level3Prefab, pos, Quaternion.identity);
+                        }
+                        break;
+                    case "Level3":
+                        if (levelCol == "Level3")
+                        {
+                            Vector3 pos = transform.position;
+                            Destroy(this.gameObject);
+                            Destroy(levelOther);
+                            Instantiate(level4Prefab, pos, Quaternion.identity);
+                        }
+                        break;
+                }
+            }     
             transform.position = startPos;
         }
     }

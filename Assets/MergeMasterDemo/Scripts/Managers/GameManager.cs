@@ -16,12 +16,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image foregroundImagePlayer;
 
     [Header("Panels")]
-    [SerializeField] GameObject startPanel;
-    [SerializeField] GameObject gamePanel;
-    [SerializeField] GameObject endPanel;
-    [SerializeField] GameObject restartPanel;
-    [SerializeField] TextMeshProUGUI coinText;
+    [SerializeField] private GameObject startPanel;
+    [SerializeField] private GameObject gamePanel;
+    [SerializeField] private GameObject endPanel;
+    [SerializeField] private GameObject restartPanel;
+    [SerializeField] private TextMeshProUGUI coinText;
 
+    [Header("Partical System")]
+    [SerializeField] private ParticleSystem winPartical;
 
     public bool roundStart { get; private set; }
     public bool isStageOver { get; private set; }
@@ -42,7 +44,7 @@ public class GameManager : MonoBehaviour
         current = this;
         roundStart = false;
         isStageOver = false;
-        coin = 200;
+        coin = 800;
         coinText.text = coin.ToString();
     }
 
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
                 isStageOver = true;
                 roundStart = false;
                 SetUI(false, false, true, false);
+                winPartical.Play();
             }
 
             //Check if all players die, Activete lose canvas.

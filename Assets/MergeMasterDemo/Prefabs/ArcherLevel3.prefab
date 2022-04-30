@@ -2443,6 +2443,7 @@ MonoBehaviour:
   level2Prefab: {fileID: 7528415665482781047, guid: 164e6aafb34cafc4cb11b13c3bc81509, type: 3}
   level3Prefab: {fileID: 7528415665482781047}
   level4Prefab: {fileID: 7528415665482781047, guid: 6e21398b41bc70b408f0f2358cdd0705, type: 3}
+  playerString: Archer
   isPlaceable: 1
 --- !u!114 &1746831590095015029
 MonoBehaviour:

@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!198 &41514002 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5745249598057189541, guid: c5416c155f60c51478ff0a3abf0cf883, type: 3}
+  m_PrefabInstance: {fileID: 5745249598027261111}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &88829050
 GameObject:
   m_ObjectHideFlags: 0
@@ -4506,6 +4511,7 @@ MonoBehaviour:
   endPanel: {fileID: 1766116863}
   restartPanel: {fileID: 253162349}
   coinText: {fileID: 1960353270}
+  winPartical: {fileID: 41514002}
 --- !u!4 &1900455829
 Transform:
   m_ObjectHideFlags: 0
@@ -4960,10 +4966,6 @@ PrefabInstance:
     - target: {fileID: 1452442463595656643, guid: c5416c155f60c51478ff0a3abf0cf883, type: 3}
       propertyPath: m_Name
       value: Arena
-      objectReference: {fileID: 0}
-    - target: {fileID: 1452442463595656643, guid: c5416c155f60c51478ff0a3abf0cf883, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2261875829275340665, guid: c5416c155f60c51478ff0a3abf0cf883, type: 3}
       propertyPath: m_RootOrder
